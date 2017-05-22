@@ -1,0 +1,1 @@
+{"virtualbox":{"/home/bogdan-test":{"owner":"root","group":"root","mount_options":["dmode=775,fmode=664"],"create":true,"type":"virtualbox","guestpath":"/home/bogdan-test","hostpath":"C:/KERMIT/bogdan-test","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/KERMIT/bogdan-test","disabled":false,"__vagrantfile":true}}}
