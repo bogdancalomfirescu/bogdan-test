@@ -1,17 +1,42 @@
-#Start Applications
+# Provision Infra
 
-##Java 
+- Install Vagrant
+- Install VirtualBox
+- Run Provisioning of VM
+```
+  set +o history # disable history
+  git_name='Bogdan Calomfirescu' git_email='bogdan.calomfirescu@yahoo.com' vagrant up
+  set -o history # enable history
+```
+- Connect to VM
+```
+  vagrant ssh
+```
 
- - `cd java`
- - `./gradlew build`
- - `java -jar build/libs/gs-spring-boot-0.1.0.jar --server.address=127.0.0.1 --server.port=50001`
+# Deploy Servers
+
+```
+  cd /home/test
+  ansible-playbook -i hosts deploy.yml
+```
+
+## Deploy Servers individually
+
+```
+  ansible-playbook -i hosts deploy.yml --tags tomcat
+  ansible-playbook -i hosts deploy.yml --tags nodejs
+  ansible-playbook -i hosts deploy.yml --tags elk-stack
+  ...
+```
+
+## Deploy Java App
+
+```
+  ansible-playbook -i hosts deploy.yml --tags java
+```
  
-##Python
+## Deploy Javascript App
 
- - `cd python`
- - `python -m SimpleHTTPServer 50002`
- 
-##Javascript
-
- - `cd javascript`
- - `PORT=50003 node server.js`
+```
+  ansible-playbook -i hosts deploy.yml --tags javascript
+```

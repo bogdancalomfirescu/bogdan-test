@@ -11,13 +11,12 @@ Vagrant.configure(2) do |config|
       "#{ENV['git_name']}",
       "#{ENV['git_email']}",
       "#{ENV['proxy_ip']}",
-      "#{ENV['proxy_port']}",
-      "#{ENV['ssh_config']}",
+      "#{ENV['proxy_port']}"
     ]
   end
 
   config.vm.box = "bento/centos-7.2"
-  config.vm.hostname = "bogdan-test"
+  config.vm.hostname = "test"
 
   ###################
   # Pord forwarding #
@@ -32,7 +31,7 @@ Vagrant.configure(2) do |config|
   end
 
   # In case you want to use virtualbox shared folders
-config.vm.synced_folder "C:/KERMIT/bogdan-test", "/home/bogdan-test",
+config.vm.synced_folder "C:/test", "/home/test",
 owner: "root", group: "root", mount_options: ["dmode=775,fmode=664"], create: true, type: "virtualbox"
 
 end

@@ -1,0 +1,9 @@
+---
+# Copy Javascript source code
+- name: Copy Javascript source code
+  copy: src=node/ dest=/usr/share/app-javascript mode=0755
+# Run Javascript App
+- name: Run Javascript App
+  shell:
+    cmd: "PORT=50003 node server.js"
+    chdir: /usr/share/app-javascript

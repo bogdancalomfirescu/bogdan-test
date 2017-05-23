@@ -1,0 +1,5 @@
+# Proxy variables
+
+proxy_env:
+  http_proxy: http://10.0.2.2:3128
+  https_proxy: http://10.0.2.2:3128

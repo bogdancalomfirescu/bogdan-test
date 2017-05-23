@@ -7,7 +7,6 @@ git_name="$1"
 git_email="$2"
 proxy_ip="$3"
 proxy_port="$4"
-ssh_config="$5"
 
 repo='https://github.com/bogdancalomfirescu/bogdan-test.git'
 
@@ -60,16 +59,6 @@ tshark iotop sysstat atop htop iptraf iftop \
 telnet nmap-ncat socat ncdu openssl \
 screen tmux dos2unix psmisc
 
-# Install docker
-yum install -y docker
-
-env | grep _proxy >> /etc/sysconfig/docker
-
-systemctl daemon-reload
-systemctl stop docker
-systemctl start docker
-systemctl enable docker
-
 ##############
 # Auth setup #
 ##############
@@ -98,8 +87,6 @@ if [ "$?" == 2 ]; then
   fi
 fi
 EOF
-
-echo export SSH_CONFIG=$ssh_config > /etc/profile.d/ansible_sshconf.sh
 
 
 ###################
