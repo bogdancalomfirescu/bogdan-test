@@ -1,0 +1,14 @@
+---
+# Copy Java source code
+- name: Copy Java source code
+  copy: src=app/ dest=/usr/share/app-java mode=0755
+# Build Java source code
+- name: Build Java source code
+  shell:
+    cmd: "gradlew {{gradle_proxy}} build"
+    chdir: /usr/share/app-java
+# Run Java App
+- name: Run Java App
+  shell:
+    cmd: "java -jar build/libs/gs-spring-boot-0.1.0.jar --server.address=127.0.0.1 --server.port=50001"
+    chdir: /usr/share/app-java

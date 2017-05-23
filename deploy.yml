@@ -1,0 +1,79 @@
+---
+- name: "Deploy the Tomcat server"
+  hosts: tomcat-servers
+  connection: local
+  remote_user: root
+  become: yes
+  become_method: sudo
+  environment:
+    "{{proxy_env}}"
+  roles:
+    - selinux
+    - tomcat
+  tags:
+    - tomcat
+
+- name: "Install the Java application"
+  hosts: tomcat-servers
+  connection: local
+  remote_user: root
+  become: yes
+  become_method: sudo
+  environment:
+    "{{proxy_env}}"
+  roles:
+    - java
+  tags:
+    - java
+
+- name: "Deploy the NodeJS server"
+  hosts: nodejs-servers
+  connection: local
+  remote_user: root
+  become: yes
+  become_method: sudo
+  environment:
+    "{{proxy_env}}"
+  roles:
+    - nodejs
+  tags:
+    - nodejs
+
+- name: "Install the Javascript application"
+  hosts: nodejs-servers
+  connection: local
+  remote_user: root
+  become: yes
+  become_method: sudo
+  environment:
+    "{{proxy_env}}"
+  roles:
+    - javascript
+  tags:
+    - javascript
+
+- name: "Deploy the ELK stack"
+  hosts: elk-servers
+  connection: local
+  remote_user: root
+  become: yes
+  become_method: sudo
+  environment:
+    "{{proxy_env}}"
+  roles:
+    - elk-stack
+  tags:
+    - elk-stack
+
+- name: "Install the Python application"
+  hosts: simplehttp-servers
+  connection: local
+  remote_user: root
+  become: yes
+  become_method: sudo
+  environment:
+    "{{proxy_env}}"
+  roles:
+    - python
+  tags:
+    - python

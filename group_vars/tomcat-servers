@@ -1,0 +1,17 @@
+#Proxy variables
+
+proxy_env:
+  http_proxy: http://10.0.2.2:3128
+  https_proxy: http://10.0.2.2:3128
+
+# Variables related to the Tomcat installation
+
+http_port: 8080
+https_port: 8443
+
+admin_username: admin
+admin_password: adminsecret
+
+# Variables related to the java deployment
+
+gradle_proxy: "-Dhttp.proxyHost=10.0.2.2 -Dhttp.proxyPort=3128 -Dhttps.proxyHost=10.0.2.2 -Dhttps.proxyPort=3128"
