@@ -1,0 +1,10 @@
+---
+# Copy Python source code
+- name: Copy Python source code
+  copy: src=app/ dest=/usr/share/app-python mode=0755
+
+# Run Python App
+- name: Run Python App
+  shell:
+    cmd: "python -m SimpleHTTPServer 50002"
+    chdir: /usr/share/app-python
